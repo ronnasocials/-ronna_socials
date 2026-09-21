@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ronna Malayon — Social Media Manager for Dental Practices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #241813;
+    --brown: #3D2B1F;
+    --brown-mid: #8B5E3C;
+    --beige: #E4D8C6;
+    --beige-soft: #F1E9DC;
+    --paper: #FBF8F3;
+    --white: #FFFFFF;
+    --line: #D8C9B2;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html, body { height: auto; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Lora', serif; font-weight: 600; margin: 0; color: var(--brown); }
+  p { margin: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* placeholder blocks — visually flagged for Ronna to swap out */
+  .placeholder {
+    border: 1.5px dashed var(--brown-mid);
+    background: repeating-linear-gradient(135deg, var(--beige-soft), var(--beige-soft) 10px, #ece0cd 10px, #ece0cd 20px);
+    color: var(--brown);
+    border-radius: 4px;
+    padding: 18px;
+    font-size: 0.86rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 110px;
+  }
+  .placeholder::before { content: "⎯ REPLACE: "; font-weight: 600; margin-right: 4px; }
+
+  /* header */
+  header {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow-name { font-size: 0.95rem; letter-spacing: 0.02em; color: var(--brown-mid); margin-bottom: 10px; }
+  header h1 { font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; max-width: 15ch; }
+  .role-line { margin-top: 16px; font-size: 1.05rem; color: var(--brown); max-width: 42ch; }
+  .header-links { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .btn-solid { background: var(--brown); color: var(--white); }
+  .btn-outline { border: 1px solid var(--brown); color: var(--brown); }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  .section-label { font-size: 0.82rem; color: var(--brown-mid); margin-bottom: 10px; }
+  section h2 { font-size: 1.55rem; max-width: 30ch; margin-bottom: 18px; }
+  .lede { max-width: 58ch; color: #4a3a30; font-size: 1.02rem; }
+
+  /* services */
+  .service-list { margin-top: 30px; display: grid; gap: 22px; }
+  .service {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--beige);
+  }
+  .service:last-child { border-bottom: none; padding-bottom: 0; }
+  .service-tag { font-size: 0.78rem; color: var(--brown-mid); padding-top: 3px; }
+  .service h3 { font-size: 1.08rem; margin-bottom: 6px; }
+  .service p { color: #4a3a30; font-size: 0.95rem; }
+
+  /* process */
+  .steps { margin-top: 30px; }
+  .step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--beige);
+  }
+  .step:first-child { border-top: none; }
+  .step-num { font-family: 'Lora', serif; color: var(--brown-mid); font-size: 1.05rem; }
+  .step h3 { font-size: 1rem; margin-bottom: 4px; }
+  .step p { font-size: 0.92rem; color: #4a3a30; }
+
+  /* case study */
+  .case {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px;
+    margin-top: 28px;
+  }
+  .case-meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; color: var(--brown-mid); margin-bottom: 14px; }
+  .case-meta span { background: var(--beige-soft); padding: 4px 10px; border-radius: 20px; }
+  .case h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .case .placeholder { margin: 16px 0; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .metric { text-align: center; }
+  .metric .num { font-family: 'Lora', serif; font-size: 1.5rem; color: var(--brown); }
+  .metric .label { font-size: 0.76rem; color: var(--brown-mid); margin-top: 2px; }
+
+  .breakdown { margin-top: 18px; display: grid; gap: 12px; }
+  .breakdown-row { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding-top: 12px; border-top: 1px solid var(--beige); }
+  .breakdown-row:first-child { border-top: none; padding-top: 0; }
+  .breakdown-label { font-size: 0.78rem; color: var(--brown-mid); font-weight: 500; padding-top: 1px; }
+  .breakdown-row p { font-size: 0.92rem; color: #4a3a30; }
+
+  /* testimonial */
+  .quote { font-family: 'Lora', serif; font-style: italic; font-size: 1.15rem; color: var(--brown); max-width: 52ch; line-height: 1.5; }
+  .quote-attr { margin-top: 16px; font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.88rem; color: var(--brown-mid); }
+
+  /* contact */
+  footer { padding: 56px 0 80px; }
+  .contact-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+  .foot-note { margin-top: 40px; font-size: 0.82rem; color: var(--brown-mid); }
+
+  @media (max-width: 480px) {
+    .service, .step, .breakdown-row { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr; }
+    .breakdown-label { padding-top: 0; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    header h1 { animation: rise 0.6s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow-name">Ronna Malayon</div>
+    <h1>Social media management for dental practices that book more consults, not just followers.</h1>
+    <p class="role-line">Content & Social Media Strategist — helping clinics turn their existing expertise into consistent, patient-facing content across Instagram and Facebook.</p>
+    <div class="header-links">
+      <a href="mailto:REPLACE@youremail.com" class="btn btn-solid">Book a free content review</a>
+      <a href="#work" class="btn btn-outline">See the work</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>Most clinics have the expertise. Most just aren't posting it.</h2>
+    <p class="lede">I work with dental practices to plan, create, and manage the content they already have the material for — treatments, transformations, and patient trust — and turn it into a steady posting rhythm designed to drive bookings, not just likes.</p>
+  </section>
+
+  <section id="services">
+    <div class="section-label">Services</div>
+    <h2>What's included</h2>
+    <div class="service-list">
+      <div class="service">
+        <div class="service-tag">01</div>
+        <div>
+          <h3>Content strategy & calendar</h3>
+          <p>Monthly content pillars and a posting calendar built around your services — Invisalign, veneers, implants, general care — mapped to what actually drives consults.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-tag">02</div>
+        <div>
+          <h3>Content creation</h3>
+          <p>Turning existing clips, before/afters, and clinic moments into short-form video and carousel posts, edited for Instagram and Facebook.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-tag">03</div>
+        <div>
+          <h3>Posting & page management</h3>
+          <p>Scheduling, captions, hashtags, and day-to-day upkeep so the page stays active without taking your time.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-tag">04</div>
+        <div>
+          <h3>Engagement & DMs</h3>
+          <p>Responding to comments and inquiries in a way that reflects the practice's tone and nudges toward booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="section-label">Process</div>
+    <h2>How a month works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><h3>Audit & angle</h3><p>Review your current page, reviews, and services to find the content angle that fits your practice.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div><h3>Calendar & approval</h3><p>You get a month of planned content — pillars, formats, and captions — before anything goes live.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div><h3>Create & schedule</h3><p>Posts are edited and scheduled around your clinic's existing footage and photos.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div><h3>Report & refine</h3><p>Monthly check-in on what worked, adjusting the next month's plan around it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-label">Sample work</div>
+    <h2>How I plan, write, and post content</h2>
+    <p class="lede">These are self-directed pieces built to show how I'd approach a dental practice's page — the writing and strategy behind each post, not just the finished visual.</p>
+
+    <div class="case">
+      <div class="case-meta"><span>[REPLACE: Reel or Carousel]</span><span>[REPLACE: e.g. Invisalign / general care / trust-building]</span></div>
+      <h3>[REPLACE: Post title or hook, e.g. "5 signs you need a filling — not a lecture"]</h3>
+      <div class="placeholder">Add a screenshot or embed of the actual reel/carousel</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="breakdown-label">Caption</span><p>[REPLACE: paste the full caption you wrote for this post]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">Hashtags</span><p>[REPLACE: the tag set you used, e.g. #DentalCare #InvisalignJourney #YourCityDentist]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">CTA</span><p>[REPLACE: what action the post asks for, e.g. "Book a free consult — link in bio"]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">Why it works for a clinic</span><p>[REPLACE: one line on the strategic thinking — e.g. "Educational hook builds trust before the ask, so it reads as helpful, not salesy."]</p></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-meta"><span>[REPLACE: Reel or Carousel]</span><span>[REPLACE: content pillar]</span></div>
+      <h3>[REPLACE: Post title or hook]</h3>
+      <div class="placeholder">Add a screenshot or embed here</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="breakdown-label">Caption</span><p>[REPLACE: caption]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">Hashtags</span><p>[REPLACE: tag set]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">CTA</span><p>[REPLACE: call to action]</p></div>
+        <div class="breakdown-row"><span class="breakdown-label">Why it works for a clinic</span><p>[REPLACE: strategic reasoning]</p></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-meta"><span>Spec concept</span><span>[REPLACE: fictional or unpaid target clinic]</span></div>
+      <h3>One-week content calendar</h3>
+      <p style="color:#4a3a30; font-size:0.95rem;">A short, focused plan showing how you'd think in systems for a real practice — not just single posts.</p>
+      <div class="placeholder">Add a calendar screenshot: 3–5 days, pillar, format, and caption angle for each</div>
+    </div>
+  </section>
+
+  <section id="testimonial">
+    <div class="section-label">What clients say</div>
+    <p class="quote">"[REPLACE: Paste a real quote from a client here — a DM, email, or review works. If you don't have one yet, leave this section out for now.]"</p>
+    <p class="quote-attr">— [REPLACE: Name, Practice]</p>
+  </section>
+
+  <footer>
+    <div class="section-label">Get in touch</div>
+    <h2>Let's plan your next month of content.</h2>
+    <p class="lede">If your page has gone quiet, or never really started, I'll put together a free content angle for your practice — no obligation.</p>
+    <div class="contact-row">
+      <a href="mailto:REPLACE@youremail.com" class="btn btn-solid">Email me</a>
+      <a href="https://bit.ly/4er2MJV" class="btn btn-outline">Full portfolio</a>
+      <a href="#" class="btn btn-outline">[REPLACE: Instagram / LinkedIn]</a>
+    </div>
+    <p class="foot-note">Ronna Malayon — Social Media Manager for dental practices, based in the Philippines, working with clinics in the US, UK, and Australia.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
